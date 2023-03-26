@@ -1,0 +1,15 @@
+spin_version = "1"
+authors = ["Engin Diri"]
+description = "Demo Spin application for AKS WASI node pool"
+name = "aks-spin-demo"
+trigger = { type = "http", base = "/" }
+version = "0.1.0"
+
+[[component]]
+id = "aks-spin-demo"
+source = "target/wasm32-wasi/release/aks_spin_demo.wasm"
+allowed_http_hosts = []
+[component.trigger]
+route = "/api/figlet"
+[component.build]
+command = "cargo build --target wasm32-wasi --release"
